@@ -2,12 +2,18 @@ import Image from "next/image";
 import React from "react";
 import ProductCourosel from "./ProductCourosel";
 
-const Product = ({ quantity, addQuantity, subQuantity, addToCart }) => {
+const Product = ({
+	quantity,
+	addQuantity,
+	subQuantity,
+	addToCart,
+	handleIsLightBox,
+}) => {
 	return (
 		<div className="md:flex ">
 			<div className="flex-1">
 				<div className="md:px-16">
-					<ProductCourosel />
+					<ProductCourosel handleIsLightBox={handleIsLightBox} />
 				</div>
 			</div>
 			<div className="flex-1 p-6">

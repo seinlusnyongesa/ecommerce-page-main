@@ -1,5 +1,6 @@
 "use client";
 import Cart from "@/components/Cart";
+import LightBox from "@/components/LightBox";
 import Navbar from "@/components/Navbar";
 import Product from "@/components/Product";
 import { useState } from "react";
@@ -10,6 +11,8 @@ export default function Home() {
 		quantity: 0,
 		items: [],
 	});
+	const [isLightBox, setIsLightBox] = useState(false);
+	const handleIsLightBox = () => setIsLightBox(!isLightBox);
 	const addItemToCart = (quantity, price) => {
 		quantity === 0 ? (quantity = quantity + 1) : "";
 		if (cart.items.length > 0) {
@@ -41,7 +44,7 @@ export default function Home() {
 	return (
 		<main
 			className={`${
-				cart.isOpen && "max-h-screen overflow-y-hidden"
+				(cart.isOpen || mobileMenuOpen) && "max-h-screen overflow-y-hidden"
 			} flex justify-center`}
 		>
 			<div className=" max-w-[1120px]">
@@ -58,20 +61,26 @@ export default function Home() {
 					subQuantity={subQuantity}
 					addToCart={addItemToCart}
 					removeFromCart={removeItemFromCart}
+					handleIsLightBox={handleIsLightBox}
 				/>
 				{cart.isOpen && (
 					<Cart cart={cart} removeFromCart={removeItemFromCart} />
 				)}
-
-				<div className="w-full flex flex-col">
-					<div className="flex-1 bg-darkGrayishBlue">darkGrayishBlue</div>
-					<div className="flex-1 bg-grayishBlue">grayishBlue</div>
-					<div className="flex-1 bg-lightGrayishBlue">lightGrayishBlue</div>
-					<div className="flex-1 bg-white">white</div>
-					<div className="flex-1 bg-black text-white">black</div>
-					<div className="flex-1 bg-veryDarkBlue">veryDarkBlue</div>
-					<div className="flex-1 bg-orange">orange</div>
-					<div className="flex-1 bg-paleOrange">pale orange</div>
+				{isLightBox && <LightBox handleIsLightBox={handleIsLightBox} />}
+				<div className="text-xs text-center mt-8">
+					Challenge by
+					<a
+						href="https://www.frontendmentor.io?ref=challenge"
+						target="_blank"
+						className="text-blue-700"
+					>
+						Frontend Mentor
+					</a>
+					. Coded by{" "}
+					<a href="#" className="text-blue-700">
+						seinlus nyongesa
+					</a>
+					.
 				</div>
 			</div>
 		</main>

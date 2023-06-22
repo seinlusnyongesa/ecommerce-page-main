@@ -3,7 +3,7 @@ import React from "react";
 
 const Cart = ({ cart, removeFromCart }) => {
 	return (
-		<div className="fixed top-[90px] left-[50%] -translate-x-[50%] w-[360px] h-[260px] bg-white rounded-lg  shadow-2xl overflow-hidden md:right-0 md:translate-x-[70%]">
+		<div className="fixed top-[90px] left-[50%] -translate-x-[50%] w-[360px] h-[260px] bg-white rounded-lg  shadow-2xl overflow-hidden md:right-0 md:translate-x-[50%]">
 			<div className=" px-7 py-6 border-[1px] ">
 				<span className="font-bold text-veryDarkBlue">Cart</span>
 			</div>
